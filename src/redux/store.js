@@ -1,13 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import cartReducer from './Cart/cartSlice'; 
-import darkModeReducer from './Darkmode/darkModeSlice';
+import { configureStore } from '@reduxjs/toolkit'
+import userDetail from './userDetail/userDetailSlice'
 
 
-
-export const store = configureStore({
+export default configureStore({
   reducer: {
-    cart: cartReducer, 
-    darkMode: darkModeReducer,
-    
+    userDetail: userDetail
   },
-});
+})

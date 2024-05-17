@@ -1,32 +1,28 @@
 import React from 'react'
-import Shop from './components/Shop'
-import Navbar from './components/Navbar'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import CartPage from './components/CartPage'
 import './App.css'
-import { useSelector } from 'react-redux'
+import Navbar from './components/Navbar'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import CreateUser from './components/CreateUser'
+import ReadData from './components/ReadData'
+import ViewUser from './components/ViewUser'
+import EditData from './components/EditData'
 
 export default function App() {
-  const mode = useSelector((state) => state.darkMode)
-  
-
-  if(mode==='light'){
-    document.body.style.backgroundColor = '#fff';
-  }
-  else{
-    document.body.style.backgroundColor = 'rgb(81 80 80)';
-  }
   return (
-    <>
     <BrowserRouter>
-    <Navbar/>
-    <Routes>
-      <Route path='/' element={<Shop/>} />
-      <Route path='/cartPage' element={<CartPage/>} />
-    </Routes>
-    
+      <Navbar />
+      <Routes>
+        <Route exact path='/allPosts' element={<ReadData />} >
+          <Route path='view/:id' element={<ViewUser />} />
+          <Route path='edit/:id' element={<EditData />} />
+        </Route>
+        <Route exact path='/' element={<CreateUser />} />
+        <Route path='*' element={<Navigate to='/' />} />
+
+      </Routes>
     </BrowserRouter>
-    </>
   )
 }
+
+
 
