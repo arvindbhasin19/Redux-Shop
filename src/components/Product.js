@@ -36,9 +36,11 @@ export default function Product() {
         
             {loading? <Spinner/>:(products.map((product, key) => (
                 <div className="col-md-3">
-                    <div  key={product.id} className={`card m-3 text-center bg-${mode}`} >
+                    <div  key={product.id} className={`card m-3 overflow-hidden text-center bg-${mode}`} >
                        <div className='text-center'>
-                       <img src={product.image} className="card-img-top" alt={product.title}  />
+                            <div className='bg-white' style={{height: "30vh", overFlow: "hidden"}}>
+                                <img src={product.image} className="card-img-top" style={{objectFit: "contain", height: "100%"}} alt={product.title} />
+                            </div>
                        </div>
                         <div className="card-body">
                             <h5 className={`card-title text-${mode==='light'?'dark':'light'}`}>{product.title.slice(0,10)}</h5>

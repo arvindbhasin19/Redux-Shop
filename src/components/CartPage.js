@@ -17,12 +17,13 @@ export default function CartPage() {
 
   const cards = products.map((product) => (
     <div className="col-md-3" key={product.id}>
-      <div className={`card m-3 text-center bg-${mode}`}>
-        <div className="text-center">
+      <div className={`card m-3 text-center bg-${mode} overflow-hidden`}>
+        <div className="text-center bg-white" style={{height: "30vh", overFlow: "hidden"}}>
           <img
             src={product.image}
             className="card-img-top"
             alt={product.title}
+            style={{objectFit: "contain", height: "100%"}}
           />
         </div>
         <div className="card-body">
